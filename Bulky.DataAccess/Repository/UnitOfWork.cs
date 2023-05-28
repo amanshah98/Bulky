@@ -25,15 +25,22 @@ namespace Bulky.DataAccess.Repository
 
         public IApplicationUserRepository _applicationUserRepository { get; private set; }
 
+        public IOrderHeaderRepository _orderHeaderRepository { get; private set; }
+
+        public IOrderDetailRepository _orderDetailRepository { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            _categoryRepository = new CategoryRepository(_db);
+            _productRepository = new ProductRepository(db);
             _productRepository = new ProductRepository(_db);
             _categoryRepository = new CategoryRepository(_db);
             _companyRepository = new CompanyRepository(_db);
             _shoppingCart = new ShoppingCartRepository(_db);
             _applicationUserRepository = new ApplicationUserRepository(_db);
+            _orderHeaderRepository= new OrderHeaderRepository(_db);
+            _orderDetailRepository= new OrderDetailRepository(_db);
         }
 
 
